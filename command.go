@@ -9,6 +9,7 @@ type commandInterface interface {
 	Output() ([]byte, error)
 }
 
+// Command is a wraper type of original Command
 type Command struct {
 	Original commandInterface
 	metrics  *Metrics
@@ -25,6 +26,7 @@ func (proxy *Command) measure(startTime time.Time) {
 	proxy.metrics.measure(startTime)
 }
 
+// Run is wrapper command of original Run()
 func (proxy *Command) Run() error {
 	if Enable {
 		startTime := time.Now()
@@ -33,6 +35,7 @@ func (proxy *Command) Run() error {
 	return proxy.Original.Run()
 }
 
+// Output is wrapper command of original Output()
 func (proxy *Command) Output() ([]byte, error) {
 	if Enable {
 		startTime := time.Now()

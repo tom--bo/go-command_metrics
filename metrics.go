@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// metrics from "github.com/rcrowley/go-metrics"
 type Metrics struct {
 	name  string
 	timer metrics.Timer
