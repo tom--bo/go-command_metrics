@@ -1,11 +1,16 @@
 package command_metrics
 
-// Enable is true when logging is on
 var Enable = true
 
-// WrapCommand simply wrap originl exec.command
+var metricsRegistry = make(map[string](*Metrics))
+
 func WrapCommand(name string, command commandInterface) *Command {
-	metrics := newMetrics(name)
-	proxy := newCommand(command, metrics)
+	metrics := metricsRegistry[name]
+	if metrics == nil {
+		metrics = newMetrics(name)
+		metricsRegistry[name] = metrics
+	}
+    proxy := newCommand(command, metrics)
 	return proxy
 }
+
