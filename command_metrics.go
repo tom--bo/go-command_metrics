@@ -10,7 +10,6 @@ func WrapCommand(name string, command commandInterface) *Command {
 		metrics = newMetrics(name)
 		metricsRegistry[name] = metrics
 	}
-    proxy := newCommand(command, metrics)
+	proxy := newCommand(command, metrics)
 	return proxy
 }
-

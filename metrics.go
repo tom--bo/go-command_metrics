@@ -26,11 +26,11 @@ func (proxy *Metrics) printMetrics(elapsedTime time.Duration) {
 	count := proxy.timer.Count()
 	if count > 0 {
 		fmt.Printf(
-			"time:%v\tcommand:%s\tcount:%d\tsum:%d\telapsed(sec):%6.3f\n",
+			"time:%v\tcommand:%s\tcount:%d\tsum:%6.3f\telapsed(sec):%6.3f\n",
 			time.Now(),
 			proxy.name,
 			proxy.timer.Count(),
-			proxy.timer.Sum(),
+			float64(proxy.timer.Sum())/float64(time.Second),
 			float64(elapsedTime)/float64(time.Second),
 		)
 	}
