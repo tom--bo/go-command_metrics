@@ -30,6 +30,8 @@ func main() {
 
 ## Output
 
+Output example (LTSV)
+
 ```
 time:2016-10-16 23:28:50.1035387 +0900 JST	command:test	count:1	sum: 1.001	elapsed(sec): 1.001
 time:2016-10-16 23:28:51.107597447 +0900 JST	command:test2	count:1	sum: 1.003	elapsed(sec): 1.003
